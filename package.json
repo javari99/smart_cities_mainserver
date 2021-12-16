@@ -19,6 +19,7 @@
   ],
   "author": "Javier Arin",
   "license": "UNLICENSED",
+  "private":"true",
   "bugs": {
     "url": "https://github.com/javari99/smart_cities_mainserver/issues"
   },
