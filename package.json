@@ -1,0 +1,26 @@
+{
+  "name": "smart_cities_mainserver",
+  "version": "1.0.0",
+  "description": "The node server for the main smart cities webserver",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javari99/smart_cities_mainserver.git"
+  },
+  "keywords": [
+    "node",
+    "postgress",
+    "express",
+    "rtsp",
+    "passportjs"
+  ],
+  "author": "Javier Arin",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/javari99/smart_cities_mainserver/issues"
+  },
+  "homepage": "https://github.com/javari99/smart_cities_mainserver#readme"
+}
