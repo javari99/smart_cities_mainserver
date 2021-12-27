@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "start:continous": "nodemon index.js",
+    "start:cluster": "node cluster-master.js",
     "lint": "eslint index.js lib",
     "compile:css": "npx tailwindcss -i ./lib/css/theme_base.css -o ./public/styles.css"
   },

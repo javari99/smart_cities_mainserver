@@ -40,6 +40,12 @@ app.set('view engine', 'handlebars');
 
 
 //-------------------------------------
+//           Security
+//-------------------------------------
+app.use(helmet.hidePoweredBy());
+// TODO: Use helmet to generate security
+
+//-------------------------------------
 //          Middleware
 //-------------------------------------
 // Logging
@@ -72,9 +78,11 @@ app.use(bodyParser.json());
 
 app.use('/public', express.static(__dirname + '/public'));
 
+
 //-------------------------------------
 //          Normal routing
 //-------------------------------------
+
 
 //-------------------------------------
 //          Special routing
@@ -88,6 +96,7 @@ app.use((err, req, res, next) => {
     res.render('500');
 });
 /* eslint-enable no-unused-vars */
+
 
 //-------------------------------------
 //          Initialize the app
