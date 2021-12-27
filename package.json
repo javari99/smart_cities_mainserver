@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/javari99/smart_cities_mainserver#readme",
   "dependencies": {
+    "axios": "^0.24.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",
     "connect-redis": "^6.0.0",
@@ -35,6 +36,7 @@
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2",
     "express-session": "^1.17.2",
+    "helmet": "^4.6.0",
     "knex": "^0.95.15",
     "morgan": "^1.10.0",
     "pg": "^8.7.1",
