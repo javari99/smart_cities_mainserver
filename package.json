@@ -4,7 +4,10 @@
   "description": "The node server for the main smart cities webserver",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "start:continous": "nodemon index.js",
+    "lint": "eslint index.js lib",
+    "compile:css": "npx tailwindcss -i ./lib/css/theme_base.css -o ./public/styles.css"
   },
   "repository": {
     "type": "git",
@@ -19,9 +22,30 @@
   ],
   "author": "Javier Arin",
   "license": "UNLICENSED",
-  "private":"true",
+  "private": "true",
   "bugs": {
     "url": "https://github.com/javari99/smart_cities_mainserver/issues"
   },
-  "homepage": "https://github.com/javari99/smart_cities_mainserver#readme"
+  "homepage": "https://github.com/javari99/smart_cities_mainserver#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "connect-redis": "^6.0.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
+    "express-session": "^1.17.2",
+    "knex": "^0.95.15",
+    "morgan": "^1.10.0",
+    "pg": "^8.7.1",
+    "redis": "^4.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "eslint": "^8.5.0",
+    "faker": "^5.5.3",
+    "jest": "^27.4.5",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.7"
+  }
 }
