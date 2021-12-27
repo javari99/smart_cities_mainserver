@@ -18,8 +18,7 @@ redisClient.on('connect', () => console.log('Succesfully connected to the redis 
 
 redisClient.connect()
     .catch((err) => console.log('Could not connect to redis...' + err));
-redisClient.auth(credentials.redis.password)
-    .catch((err) => console.log('Error authenticating into redis... ' + err));
+redisClient.auth(credentials.redis.password);
 
 const morgan = require('morgan');
 const fs = require('fs');
@@ -109,8 +108,8 @@ app.use((err, req, res, next) => {
  */
 function startServerInstance(port){
     app.listen(port, () => {
-        `Express server in ${app.get('env')} mode, started on http://localhost:${port};
-            Press Ctrl-C to terminate.`;
+        console.log(`Express server in ${app.get('env')} mode, started on http://localhost:${port};
+            Press Ctrl-C to terminate.`);
     });
 
     process.on('uncaughtException', (err) => {
