@@ -106,7 +106,7 @@ app.use((err, req, res, next) => {
  * @param {number} port The port the process will listen to
  * @returns {void}
  */
-function startServerInstance(port){
+function StartServerInstance(port){
     app.listen(port, () => {
         console.log(`Express server in ${app.get('env')} mode, started on http://localhost:${port};
             Press Ctrl-C to terminate.`);
@@ -121,7 +121,7 @@ function startServerInstance(port){
 
 // Will invoke differently if the file is executed as a module or as the main file
 if(require.main === module){
-    startServerInstance(credentials.port);
+    StartServerInstance(credentials.port);
 } else {
-    module.exports = startServerInstance;
+    module.exports = StartServerInstance;
 }

@@ -4,21 +4,21 @@ const cluster = require('cluster');
  * Starts a new process to execute a server instance 
  * @returns {void}
  */
-function startWorker() {
+function StartWorker() {
     const worker = cluster.fork();
     console.log(`Cluster: Worker ${worker.id} started.`);
 }
 
 if(cluster.isMaster) {
     // Cluster master controls the state and number of workers
-    require('os').cpus().forEach(startWorker);
+    require('os').cpus().forEach(StartWorker);
 
     cluster.on('disconnect', (worker) => {
         console.log(`Cluster: Worker ${worker.id} disconnected from the cluster.`);
     });
     cluster.on('exit', (worker, code, signal) => {
         console.log(`Cluster: Worker ${worker.id} finished with exit code ${code} (${signal})`);
-        startWorker();
+        StartWorker();
     });
 }else {
     // Child processes execute an instance for the index app
