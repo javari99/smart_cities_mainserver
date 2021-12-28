@@ -13,6 +13,8 @@ const redisStore = require('connect-redis')(expressSession);
 const redisClient = redis.createClient({legacyMode: true});
 const helmet = require('helmet');
 
+const showFlashOnce = require('./lib/middleware/show-flash-once');
+
 redisClient.on('error', (err) => console.log(`Redis client error: ${err.message}`));
 redisClient.on('connect', () => console.log('Succesfully connected to the redis instance.'));
 
@@ -72,6 +74,7 @@ app.use(expressSession({
         port: credentials.redis.port,
     }),
 }));
+app.use(showFlashOnce);
 
 app.use(bodyParser.json());
 
@@ -81,7 +84,6 @@ app.use('/public', express.static(__dirname + '/public'));
 //-------------------------------------
 //          Normal routing
 //-------------------------------------
-
 
 //-------------------------------------
 //          Special routing
