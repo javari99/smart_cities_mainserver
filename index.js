@@ -13,8 +13,16 @@ const redisStore = require('connect-redis')(expressSession);
 const redisClient = redis.createClient({legacyMode: true});
 const helmet = require('helmet');
 
-const showFlashOnce = require('./lib/middleware/show-flash-once');
+const passport = require('passport');
 
+const showFlashOnce = require('./lib/middleware/show-flash-once');
+const sendUserHandlebars = require('./lib/middleware/send-user-handlebars');
+const db = require('./lib/db/db');
+
+//Configure passportjs
+require('./lib/auth/passport')(passport, db);
+
+//Configure and connect to redis
 redisClient.on('error', (err) => console.log(`Redis client error: ${err.message}`));
 redisClient.on('connect', () => console.log('Succesfully connected to the redis instance.'));
 
@@ -34,6 +42,12 @@ const app = express();
 // Create and set the view engine
 const hbs = expressHandlebars.create({
     defaultLayout: 'main',
+    helpers: {
+        ifeq: function(arg1, arg2, options) {
+            if(arg1 === arg2) return options.fn(this);
+            return options.inverse(this);
+        }
+    }
 });
 
 app.engine('handlebars', hbs.engine);
@@ -77,6 +91,13 @@ app.use(expressSession({
 app.use(showFlashOnce);
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
+//Store user authentication into the session
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(sendUserHandlebars);
 
 app.use('/public', express.static(__dirname + '/public'));
 
@@ -84,6 +105,20 @@ app.use('/public', express.static(__dirname + '/public'));
 //-------------------------------------
 //          Normal routing
 //-------------------------------------
+const mainRoutes = require('./lib/routes/main-routes');
+
+app.get('/', mainRoutes.main);
+
+app.get('/flash', (req, res) =>{
+    req.session.flash = {
+        type: 'success',
+        message: `successful! user: ${req.user.username}`,
+    };
+    res.redirect('/');
+});
+
+const authRouter = require('./lib/routes/auth-router')(passport);
+app.use('/auth', authRouter);
 
 //-------------------------------------
 //          Special routing
