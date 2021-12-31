@@ -1,18 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Placeholder title</title>
-    <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/public/styles.css">
+    <meta name="description" content="A page about Donostia being an smart city">
+    <link rel="stylesheet" href="/public/style.css">
+    <title>SmarterCity</title>
 </head>
-<body>
-    {{{body}}}
-    <div class="mx-10">
+
+<body class="font-sans w-full min-h-screen">
+    <nav class="bg-white shadow-xl">
+        <div class="container mx-auto px-4">
+            <!--Regular navbar-->
+            <div class="flex items-center justify-between py-4">
+                <div class="hidden sm:flex sm:items-center sm:gap-1">
+                    <a href="/" class="px-3 py-2 text-gray-800 text-sm font-semibold hover:text-indigo-600">Home</a>
+                    <a href="/suggestions"
+                        class="px-3 py-2 text-gray-800 text-sm font-semibold hover:text-indigo-600">Suggestions</a>
+                    <a href="/dashboard"
+                        class="px-3 py-2 text-gray-800 text-sm font-semibold hover:text-indigo-600">Dashboard</a>
+                </div>
+                <div class="hidden sm:flex sm:items-center sm:gap-1">
+                    <!--If not logged in, else show a logout button instead and a profile button or smth-->
+                    <a href="/auth/login"
+                        class="px-3 py-2 bg-indigo-600 text-white hover:bg-indigo-300 rounded-sm">Login</a>
+                </div>
+            </div>
+            <!--Mobile devices navbar column-->
+            <button class="sm:hidden px-2 py-1 text-gray-800 text-sm font-semibold hover:text-indigo-800 mb-1 
+                border-2 border-indigo-200 rounded-lg hover:bg-indigo-200" 
+                onclick="document.getElementById('dropdown').classList.contains('hidden')
+                ?document.getElementById('dropdown').classList.remove('hidden')
+                :document.getElementById('dropdown').classList.add('hidden') ">Menu</button>
+            <div class="hidden block sm:hidden bg-white border-t-2 py-2" id="dropdown">
+                <div class="flex flex-col divide-solid divide-y-2">
+                    <div class="flex flex-col py-1">
+                        <a href="/" class="text-gray-800 text-sm font-semibold hover:text-indigo-600 mb-1">Home</a>
+                        <a href="/suggestions"
+                            class="text-gray-800 text-sm font-semibold hover:text-indigo-600 mb-1">Suggestions</a>
+                        <a href="/dashboard"
+                            class="text-gray-800 text-sm font-semibold hover:text-indigo-600 mb-1">Dashboard</a>
+                    </div>
+                    <div class="flex flex-col py-1">
+                        <a href="/auth/login"
+                            class="text-gray-800 text-sm font-semibold hover:text-indigo-600 mb-1">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main>
         {{> flash}}
-    </div>
+        {{{body}}}
+    </main>
+    <footer class="w-full bg-gray-600 py-3 flex justify-around flex-wrap divide-solid">
+        <div class="flex flex-col">
+            <a href="/" class="text-gray-300 text-sm font-semibold hover:text-pink-400">Home</a>
+            <a href="/suggestions"
+                class="text-gray-300 text-sm font-semibold hover:text-pink-400">Suggestions</a>
+            <a href="/dashboard"
+                class="text-gray-300 text-sm font-semibold hover:text-pink-400">Dashboard</a>
+        </div>
+        <div class="self-end">
+            <small class="text-gray-300 text-sm font-semibold mt-auto">&copy; Copyright 2021, Javier Arin.</small> 
+        </div>
+    </footer>
 </body>
 </html>

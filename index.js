@@ -110,9 +110,12 @@ const mainRoutes = require('./lib/routes/main-routes');
 app.get('/', mainRoutes.main);
 
 app.get('/flash', (req, res) =>{
+    let message;
+    if(req.user) message = `Flash succesful! User: ${req.user.username}.`;
+    else message = 'Flash succesful! There is no user though.';
     req.session.flash = {
         type: 'success',
-        message: `successful! user: ${req.user.username}`,
+        message: message,
     };
     res.redirect('/');
 });
