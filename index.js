@@ -105,9 +105,9 @@ app.use('/public', express.static(__dirname + '/public'));
 //-------------------------------------
 //          Normal routing
 //-------------------------------------
-const mainRoutes = require('./lib/routes/main-routes');
+const mainRouter = require('./lib/routes/main-router');
 
-app.get('/', mainRoutes.main);
+app.use('/', mainRouter);
 
 app.get('/flash', (req, res) =>{
     let message;
