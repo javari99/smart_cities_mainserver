@@ -1,0 +1,86 @@
+<section class="min-h-screen w-full flex flex-col justify-center items-center bg-indigo-100">
+    <div class=" bg-white shadow-none sm:shadow-lg px-8 sm:px-12 w-full xs:w-full sm:w-3/4 lg:w-2/3 h-screen sm:h-auto">
+        <div class="text-center w-full font-bold text-3xl text-gray-600 p-4 uppercase">
+            Suggestion
+        </div>
+        <div class="w-full bg-gray-200 my-3" style="height: 1px;"></div>
+        <form action="/suggestions" method="post">
+            <div class="flex flex-col gap-4 px-0 py-4">
+                <div>
+                    <label for="message" class="text-gray-700">Message</label>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="font-medium text-2xl text-gray-600 p-2.5 px-3 w-11 absolute" viewBox="0 0 24 24"
+                        stroke="currentColor" fill="none" stroke-width=1.5>
+                        <path fill="currentColor"
+                            d="M16.84,2.73C16.45,2.73 16.07,2.88 15.77,3.17L13.65,5.29L18.95,10.6L21.07,8.5C21.67,7.89 21.67,6.94 21.07,6.36L17.9,3.17C17.6,2.88 17.22,2.73 
+                                    16.84,2.73M12.94,6L4.84,14.11L7.4,14.39L7.58,16.68L9.86,16.85L10.15,19.41L18.25,11.3M4.25,15.04L2.5,21.73L9.2,19.94L8.96,17.78L6.65,17.61L6.47,15.29" />
+                    </svg>
+                    <textarea id="message" name="message" class="py-2 pl-10 border border-gray-200 w-full"
+                        placeholder="message..." rows="5" cols="50" required></textarea>
+                </div>
+                <div>
+                    <label for="rating" class="text-gray-700">Rating</label>
+                    <div id="rating" class="flex flex-col justify-around md:flex-row">
+                        <div class="">
+                            <input type="radio" id="opt-0" name="rating" value="0">
+                            <label for="opt-0">0</label>
+                        </div>
+                        <div class="">
+                            <input type="radio" id="opt-1" name="rating" value="1">
+                            <label for="opt-1">1</label>
+                        </div>
+                        <div class="">
+                            <input type="radio" id="opt-2" name="rating" value="2">
+                            <label for="opt-2">2</label>
+                        </div>
+                        <div class="">
+                            <input type="radio" id="opt-3" name="rating" value="3">
+                            <label for="opt-3">3</label>
+                        </div>
+                        <div class="">
+                            <input type="radio" id="opt-4" name="rating" value="4">
+                            <label for="opt-4">4</label>
+                        </div>
+                        <div class="">
+                            <input type="radio" id="opt-5" name="rating" value="5" checked>
+                            <label for="opt-5">5</label>
+                        </div>
+                        <div class="">
+                            <input type="radio" id="opt-6" name="rating" value="6">
+                            <label for="opt-6">6</label>
+                        </div>
+                        <div class="">
+                            <input type="radio" id="opt-7" name="rating" value="7">
+                            <label for="opt-7">7</label>
+                        </div>
+                        <div class="">
+                            <input type="radio" id="opt-8" name="rating" value="8">
+                            <label for="opt-8">8</label>
+                        </div>
+                        <div class="">
+                            <input type="radio" id="opt-9" name="rating" value="9">
+                            <label for="opt-9">9</label>
+                        </div>
+                        <div class="">
+                            <input type="radio" id="opt-10" name="rating" value="10">
+                            <label for="opt-10">10</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full flex flex-row justify-center">
+                    <button type="submit"
+                        class="border border-indigo-600 hover:bg-indigo-600 hover:text-white duration-100 ease-in-out w-6/12 text-indigo-600 px-0 py-3 flex flex-row justify-center items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                            <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                            <line x1="16" y1="5" x2="19" y2="8" />
+                        </svg>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
