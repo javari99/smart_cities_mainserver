@@ -53,6 +53,10 @@ const hbs = expressHandlebars.create({
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+//-------------------------------------
+//          RTSP - RELAY
+//-------------------------------------
+const {scriptUrl} = require('./lib/api/rtsp-relay')(app);
 
 //-------------------------------------
 //           Security
@@ -105,23 +109,14 @@ app.use('/public', express.static(__dirname + '/public'));
 //-------------------------------------
 //          Normal routing
 //-------------------------------------
-const mainRouter = require('./lib/routes/main-router');
-
+const mainRouter = require('./lib/routes/main-router')(scriptUrl);
 app.use('/', mainRouter);
-
-app.get('/flash', (req, res) =>{
-    let message;
-    if(req.user) message = `Flash succesful! User: ${req.user.username}.`;
-    else message = 'Flash succesful! There is no user though.';
-    req.session.flash = {
-        type: 'success',
-        message: message,
-    };
-    res.redirect('/');
-});
 
 const authRouter = require('./lib/routes/auth-router')(passport);
 app.use('/auth', authRouter);
+
+const apiRouter = require('./lib/routes/api-router');
+app.use('/api', apiRouter);
 
 //-------------------------------------
 //          Special routing

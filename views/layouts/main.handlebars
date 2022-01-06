@@ -19,8 +19,10 @@
                     <a href="/" class="px-3 py-2 text-gray-800 text-sm font-semibold hover:text-indigo-600">Home</a>
                     <a href="/suggestions"
                         class="px-3 py-2 text-gray-800 text-sm font-semibold hover:text-indigo-600">Suggestions</a>
-                    <a href="/dashboard"
+                {{#if user.isAdmin}}
+                    <a href="/admin/dashboard"
                         class="px-3 py-2 text-gray-800 text-sm font-semibold hover:text-indigo-600">Dashboard</a>
+                {{/if}}
                 </div>
                 <div class="hidden sm:flex sm:items-center sm:gap-1">
                     <!--If not logged in, else show a logout button instead and a profile button or smth-->
@@ -47,8 +49,10 @@
                         <a href="/" class="text-gray-800 text-sm font-semibold hover:text-indigo-600 mb-1">Home</a>
                         <a href="/suggestions"
                             class="text-gray-800 text-sm font-semibold hover:text-indigo-600 mb-1">Suggestions</a>
-                        <a href="/dashboard"
+                    {{#if user.isAdmin}}
+                        <a href="/admin/dashboard"
                             class="text-gray-800 text-sm font-semibold hover:text-indigo-600 mb-1">Dashboard</a>
+                    {{/if}}
                     </div>
                     <div class="flex flex-col py-1">
                     {{#if user}}
@@ -74,8 +78,10 @@
             <a href="/" class="text-gray-300 text-sm font-semibold hover:text-pink-400">Home</a>
             <a href="/suggestions"
                 class="text-gray-300 text-sm font-semibold hover:text-pink-400">Suggestions</a>
-            <a href="/dashboard"
+        {{#if user.isAdmin}}
+            <a href="/admin/dashboard"
                 class="text-gray-300 text-sm font-semibold hover:text-pink-400">Dashboard</a>
+        {{/if}}
         </div>
         <div class="self-end">
             <small class="text-gray-300 text-sm font-semibold mt-auto">&copy; Copyright 2021, Javier Arin.</small> 
