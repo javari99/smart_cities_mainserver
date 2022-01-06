@@ -1,9 +1,12 @@
 module.exports = {
     darkMode: false,
-    purge: [
-        './placeholderviews/**/*.html',
-        './views/**/*.handlebars'
-    ],
+    purge: {
+        enabled: true,
+        content: [
+            './placeholderviews/**/*.html',
+            './views/**/*.handlebars'
+        ]
+    },
     theme: {
         extend: {},
     },
