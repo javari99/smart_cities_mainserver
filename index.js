@@ -157,6 +157,16 @@ function StartServerInstance(port){
 // Will invoke differently if the file is executed as a module or as the main file
 if(require.main === module){
     StartServerInstance(credentials.port);
+
+    db.CleanOldRecords()
+        .then(() => console.log('Cleaned old records'))
+        .catch((err) => console.log('ERROR: could not clean old records: ' + err));
+
+    setInterval(() => {db.CleanOldRecords()
+        .then(() => console.log('Cleaned old records'))
+        .catch((err) => console.log('ERROR: could not clean old records: ' + err));
+    }, 24*60*60*1000); //Clear old records every 24hrs
+    
 } else {
     module.exports = StartServerInstance;
 }
