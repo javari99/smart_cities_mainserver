@@ -21,6 +21,8 @@
                             <th class="py-4 px-6  font-bold uppercase text-sm text-gray-800 border-b border-gray-600">
                                 ID</th>
                             <th class="py-4 px-6  font-bold uppercase text-sm text-gray-800 border-b border-gray-600">
+                                Username</th>
+                            <th class="py-4 px-6  font-bold uppercase text-sm text-gray-800 border-b border-gray-600">
                                 Message</th>
                             <th class="py-4 px-6  font-bold uppercase text-sm text-gray-800 border-b border-gray-600">
                                 Rating</th>
@@ -30,6 +32,9 @@
                         {{#each suggestionsList}}
                         <tr class="hover:bg-gray-100">
                             <td class="py-4 px-6 border-b font-bold">{{this.id}}</td>
+                            <td class="py-4 px-6 border-b ">
+                                <p class="text-grey-800  py-1 px-3 rounded text-sm">{{this.username}}</p>
+                            </td>
                             <td class="py-4 px-6 border-b ">
                                 <p class="text-grey-800  py-1 px-3 rounded text-sm">{{this.suggestion}}</p>
                             </td>
@@ -189,6 +194,9 @@
                     suggestionsTableBody.insertAdjacentHTML('beforeend', `
                         <tr class="hover:bg-gray-100">
                             <td class="py-4 px-6 border-b font-bold">${suggestion.id}</td>
+                            <td class="py-4 px-6 border-b ">
+                                <p class="text-grey-800  py-1 px-3 rounded text-sm">${suggestion.username}</p>
+                            </td>
                             <td class="py-4 px-6 border-b ">
                                 <p class="text-grey-800  py-1 px-3 rounded text-sm">${suggestion.suggestion}</p>
                             </td>
