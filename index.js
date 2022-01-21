@@ -11,6 +11,8 @@ const redis = require('redis');
 const expressSession = require('express-session');
 const redisStore = require('connect-redis')(expressSession);
 const redisClient = redis.createClient({legacyMode: true});
+const https = require('https');
+const fs = require('fs');
 const helmet = require('helmet');
 
 const passport = require('passport');
@@ -142,10 +144,22 @@ app.use((err, req, res, next) => {
  * @returns {void}
  */
 function StartServerInstance(port){
+
+    https.createServer({
+        key: fs.readFileSync('../sslcert/smartercity.es/privkey1.pem'),
+        cert: fs.readFileSync('../sslcert/smartercity.es/cert1.pem'),
+        ca: fs.readFileSync('../sslcert/smartercity.es/chain1.pem')
+    }, app).listen(PORT, function(){
+        console.log(`Express server in ${app.get('env')} mode, started on https://localhost:${port};
+        Press Ctrl-C to terminate.`);
+    });
+
+    /*
     app.listen(port, () => {
         console.log(`Express server in ${app.get('env')} mode, started on http://localhost:${port};
             Press Ctrl-C to terminate.`);
     });
+    */
 
     process.on('uncaughtException', (err) => {
         console.log(`FATAL ERROR: UNCAUGHT EXCEPTION
