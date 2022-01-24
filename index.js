@@ -11,7 +11,7 @@ const redis = require('redis');
 const expressSession = require('express-session');
 const redisStore = require('connect-redis')(expressSession);
 const redisClient = redis.createClient({legacyMode: true});
-const https = require('https');
+//const https = require('https');
 const helmet = require('helmet');
 
 const passport = require('passport');
@@ -54,6 +54,9 @@ const hbs = expressHandlebars.create({
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+
+//Enable apache usage
+app.enable('trust proxy');
 //-------------------------------------
 //          RTSP - RELAY
 //-------------------------------------
@@ -64,7 +67,6 @@ const {scriptUrl} = require('./lib/api/rtsp-relay')(app);
 //-------------------------------------
 app.use(helmet.hidePoweredBy());
 // TODO: Use helmet to generate security
-
 //-------------------------------------
 //          Middleware
 //-------------------------------------
@@ -143,7 +145,7 @@ app.use((err, req, res, next) => {
  * @returns {void}
  */
 function StartServerInstance(port){
-
+    /*
     https.createServer({
         key: fs.readFileSync('../sslcert/smartercity.es/privkey1.pem'),
         cert: fs.readFileSync('../sslcert/smartercity.es/cert1.pem'),
@@ -152,13 +154,12 @@ function StartServerInstance(port){
         console.log(`Express server in ${app.get('env')} mode, started on https://localhost:${port};
         Press Ctrl-C to terminate.`);
     });
+    */
 
-    /*
     app.listen(port, () => {
         console.log(`Express server in ${app.get('env')} mode, started on http://localhost:${port};
             Press Ctrl-C to terminate.`);
     });
-    */
 
     process.on('uncaughtException', (err) => {
         console.log(`FATAL ERROR: UNCAUGHT EXCEPTION
